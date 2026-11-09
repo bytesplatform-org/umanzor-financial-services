@@ -254,7 +254,7 @@ export default function Header() {
                   className="group flex items-baseline gap-5 py-4"
                 >
                   <Index n={i + 1} className="t-meta text-gold" />
-                  <span className="font-serif text-[2.4rem] leading-none tracking-[-0.01em] sm:text-5xl">{item.label}</span>
+                  <span className="font-display font-semibold text-[2.4rem] leading-none tracking-[-0.01em] sm:text-5xl">{item.label}</span>
                   <Arrow className="ml-auto self-center text-paper/50" />
                 </a>
               </li>

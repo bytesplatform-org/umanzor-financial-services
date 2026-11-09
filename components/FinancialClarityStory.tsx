@@ -96,7 +96,7 @@ function Report({ step }: { step: number }) {
     >
       <div className="flex items-start justify-between border-b border-[var(--line-strong)] pb-4">
         <div>
-          <p className="font-serif text-[1.5rem] leading-none xl:text-[1.75rem]">Quarterly financial report</p>
+          <p className="font-display font-semibold text-[1.5rem] leading-none xl:text-[1.75rem]">Quarterly financial report</p>
           <p className="t-meta mt-2 text-slate">Sample Services Co. · Q3 2026 · July to September</p>
         </div>
         <p className="t-meta text-right text-slate">
@@ -165,7 +165,7 @@ function Report({ step }: { step: number }) {
         {KEY.map((k, i) => (
           <div key={k.label} data-g="key" data-em="" className={`px-3 pb-1 pt-3 ${i > 0 ? "border-l border-[var(--line)]" : "-ml-0"}`}>
             <p className="text-[0.6875rem] text-slate">{k.label}</p>
-            <p data-figure className="num mt-1 font-serif text-[1.35rem] leading-none xl:text-[1.6rem]">
+            <p data-figure className="num mt-1 font-display font-semibold text-[1.35rem] leading-none xl:text-[1.6rem]">
               {k.value}
             </p>
           </div>
@@ -285,7 +285,7 @@ export default function FinancialClarityStory() {
                       <p className="t-meta text-gold-soft">
                         <Index n={i + 1} /> <span className="text-paper/40">/ 03</span>
                       </p>
-                      <h3 className="mt-5 font-serif text-[2rem] leading-[1.05] tracking-[-0.01em] xl:text-[2.5rem]">{s.title}</h3>
+                      <h3 className="mt-5 font-display font-semibold text-[2rem] leading-[1.05] tracking-[-0.01em] xl:text-[2.5rem]">{s.title}</h3>
                       <p className="mt-5 max-w-[28rem] text-[1rem] leading-relaxed text-paper/70">{s.body}</p>
                       <p className="t-meta mt-6 text-paper/45">In the report: {s.ref}</p>
                       <div className="lg:hidden">

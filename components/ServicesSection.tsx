@@ -192,7 +192,7 @@ export default function ServicesSection() {
                 >
                   <div className="overflow-hidden">
                     <div className="pb-8 pl-0 sm:pl-[2.5rem]">
-                      <p className="font-serif text-[1.65rem] leading-[1.1]">{s.headline}</p>
+                      <p className="font-display font-semibold text-[1.65rem] leading-[1.1]">{s.headline}</p>
                       <p className="mt-3 text-[0.9375rem] leading-relaxed text-slate-2">{s.description}</p>
                       <p className="t-label mt-6 text-slate">{s.includesLabel}</p>
                       <ul className="mt-2">

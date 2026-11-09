@@ -45,7 +45,7 @@ export function Wordmark({ tone = "light", className = "" }: { tone?: "light" | 
   const sub = tone === "light" ? "text-paper/60" : "text-slate-2";
   return (
     <span className={`inline-flex flex-col leading-none ${className}`}>
-      <span className={`font-serif text-[1.7rem] tracking-[0.01em] ${name}`}>Umanzor</span>
+      <span className={`font-display text-[1.6rem] font-semibold tracking-[0.005em] ${name}`}>Umanzor</span>
       <span className="mt-[5px] flex items-center gap-[6px]" aria-hidden="true">
         <span className="h-px flex-1 bg-gold/70" />
         <span className="size-[5px] rotate-45 bg-gold" />

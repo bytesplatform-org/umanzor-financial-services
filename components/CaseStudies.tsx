@@ -99,10 +99,10 @@ export default function CaseStudies() {
           <div key={c.id} className="panel-in-stagger grid lg:grid-cols-12">
             {/* Key figure */}
             <div className="flex flex-col border-b border-[var(--line)] p-7 sm:p-10 lg:col-span-5 lg:border-b-0 lg:border-r xl:p-12">
-              <h3 className="font-serif text-[2.25rem] leading-[1.05] tracking-[-0.01em] sm:text-[2.75rem]">{c.client}</h3>
+              <h3 className="font-display font-semibold text-[2.25rem] leading-[1.05] tracking-[-0.01em] sm:text-[2.75rem]">{c.client}</h3>
               <p className="mt-2 text-[0.875rem] text-slate">{c.sector}</p>
               <div className="mt-12 border-t border-[var(--line-strong)] pt-8 lg:mt-16">
-                <p className="num font-serif text-[clamp(4rem,2.5rem+5vw,7.5rem)] leading-[0.9] tracking-[-0.03em]">{c.figure}</p>
+                <p className="num font-display font-semibold text-[clamp(4rem,2.5rem+5vw,7.5rem)] leading-[0.9] tracking-[-0.03em]">{c.figure}</p>
                 <p className="mt-4 max-w-[18rem] text-[0.9375rem] leading-relaxed text-slate-2">{c.figureCaption}</p>
               </div>
               <dl className="mt-10 text-[0.8125rem] lg:mt-auto lg:pt-10">
@@ -141,7 +141,7 @@ export default function CaseStudies() {
 
               {c.quote && (
                 <figure className="mt-8 border-l-2 border-gold bg-paper px-6 py-5">
-                  <blockquote className="font-serif text-[1.25rem] leading-[1.35] text-ink">
+                  <blockquote className="font-display text-[1.25rem] leading-[1.35] text-ink">
                     <p>&ldquo;{c.quote.text}&rdquo;</p>
                   </blockquote>
                   <figcaption className="mt-4 text-[0.8125rem] text-slate">

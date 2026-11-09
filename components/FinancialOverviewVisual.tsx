@@ -57,7 +57,7 @@ export default function FinancialOverviewVisual() {
               <dt className="t-label text-slate">{f.k}</dt>
               <dd
                 className={`num mt-2 tracking-[-0.02em] ${
-                  f.strong ? "font-serif text-[1.65rem] leading-none sm:text-[2rem]" : "text-[1.05rem] font-medium leading-tight sm:text-[1.2rem]"
+                  f.strong ? "font-display font-semibold text-[1.65rem] leading-none sm:text-[2rem]" : "text-[1.05rem] font-medium leading-tight sm:text-[1.2rem]"
                 }`}
               >
                 <span className="text-slate">$</span>

@@ -58,12 +58,12 @@ export default function Hero() {
             <span className="normal-case tracking-normal text-[0.8125rem] text-paper/50 max-sm:hidden">{CONTACT.reach}</span>
           </p>
 
-          <h1 className="t-display lg:text-[min(6.6vw,6.4rem)]">
+          <h1 className="t-display lg:text-[min(6.1vw,6rem)]">
             <MaskedLines
               hero
               lines={[
-                "Your business deserves",
-                "a clearer",
+                "Your business",
+                "deserves a clearer",
                 <em key="em" className="text-gold-soft">
                   financial picture.
                 </em>,

@@ -24,7 +24,7 @@ export default function WhyUmanzor() {
             <h2 id="about-title" className="t-h1" data-mask-group>
               <MaskedLines lines={["Professional financial support.", <em key="e">A more personal approach.</em>]} />
             </h2>
-            <p data-reveal className="mt-10 max-w-[36rem] font-serif text-[clamp(1.4rem,1.1rem+0.9vw,1.9rem)] leading-[1.3] text-slate-2">
+            <p data-reveal className="mt-10 max-w-[36rem] font-display text-[clamp(1.4rem,1.1rem+0.9vw,1.9rem)] leading-[1.3] text-slate-2">
               Umanzor Financial Services was founded with a simple goal: to help business owners better understand their
               finances and spend less time worrying about their books.
             </p>
@@ -40,7 +40,7 @@ export default function WhyUmanzor() {
             <div className="flex items-center gap-4 py-6">
               <span
                 aria-hidden="true"
-                className="grid size-14 shrink-0 place-items-center bg-ink font-serif text-[1.5rem] text-gold-soft"
+                className="grid size-14 shrink-0 place-items-center bg-ink font-display font-semibold text-[1.5rem] text-gold-soft"
               >
                 AU
               </span>
@@ -70,7 +70,7 @@ export default function WhyUmanzor() {
               <li key={d.title} className="relative">
                 <span data-rule aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-[var(--line-strong)]" />
                 <div data-reveal className="grid gap-x-8 gap-y-3 py-8 md:grid-cols-[4rem_1fr_1.3fr]">
-                  <Index n={i + 1} className="font-serif text-[2rem] leading-none text-gold-deep" />
+                  <Index n={i + 1} className="font-display font-semibold text-[2rem] leading-none text-gold-deep" />
                   <h3 className="t-h3">{d.title}</h3>
                   <p className="text-[1rem] leading-relaxed text-slate-2">{d.body}</p>
                 </div>

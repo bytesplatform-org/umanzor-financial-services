@@ -21,7 +21,7 @@ export default function ProblemSection() {
   return (
     <section ref={root} aria-labelledby="problem-title" className="relative bg-paper py-[clamp(96px,12vw,176px)]">
       <div className="shell grid gap-y-14 lg:grid-cols-12 lg:gap-x-8">
-        <header className="lg:col-span-5 lg:pr-8">
+        <header className="lg:col-span-5">
           <div className="lg:sticky lg:top-28">
             <h2 id="problem-title" className="t-h1" data-mask-group>
               <MaskedLines lines={["You run the business.", <em key="e">We&rsquo;ll make sense</em>, <em key="f">of the numbers.</em>]} />
