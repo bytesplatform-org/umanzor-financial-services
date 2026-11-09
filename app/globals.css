@@ -1,26 +1,323 @@
 @import "tailwindcss";
 
+/* ------------------------------------------------------------------
+   Umanzor design tokens
+   Two primary surfaces (midnight ink, warm paper) and one brass accent
+   drawn from the client's UF monogram.
+------------------------------------------------------------------- */
+@theme {
+  --color-ink: #0b1730;
+  --color-ink-2: #10203f;
+  --color-ink-3: #07101f;
+  --color-blue: #173e70;
+  --color-paper: #f6f5f1;
+  --color-paper-2: #ecebe5;
+  --color-card: #fdfcfa;
+  --color-slate: #687485;
+  --color-slate-2: #4d5868;
+  --color-mist: #a9b2c0;
+  --color-gold: #b8975a;
+  --color-gold-soft: #d3bb8c;
+  --color-gold-deep: #85652f;
+  --color-positive: #2f6b4f;
+  --color-positive-soft: #7fbf9c;
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-instrument-serif), ui-serif, Georgia, serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --gutter: clamp(20px, 4.2vw, 64px);
+  --max: 1440px;
+  --header-h: 84px;
+  --line: rgb(11 23 48 / 0.12);
+  --line-strong: rgb(11 23 48 / 0.22);
+  --line-dark: rgb(246 245 241 / 0.12);
+  --line-dark-strong: rgb(246 245 241 / 0.22);
+  color-scheme: light;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 72px;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv11";
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--color-gold-soft);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ------------------------------------------------------------------
+   Layout
+------------------------------------------------------------------- */
+@utility shell {
+  width: 100%;
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* ------------------------------------------------------------------
+   Type scale
+------------------------------------------------------------------- */
+@utility t-display {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(2.75rem, 1.35rem + 5.1vw, 6.4rem);
+  line-height: 0.96;
+  letter-spacing: -0.022em;
+}
+@utility t-h1 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(2.4rem, 1.45rem + 3.3vw, 4.75rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+@utility t-h2 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(2rem, 1.4rem + 2vw, 3.25rem);
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+}
+@utility t-h3 {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.6rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+@utility t-lead {
+  font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+  line-height: 1.6;
+  letter-spacing: -0.005em;
+}
+@utility t-label {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+@utility t-meta {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+}
+@utility num {
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum", "lnum";
+}
+
+/* ------------------------------------------------------------------
+   Interaction primitives
+------------------------------------------------------------------- */
+
+/* Precise underline that draws from the left */
+@utility link-line {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.45s var(--ease-out-quart);
+  &:hover,
+  &:focus-visible {
+    background-size: 100% 1px;
+  }
+}
+
+@layer components {
+/* Arrow that nudges in its direction */
+.arrow-nudge {
+  transition: transform 0.35s var(--ease-out-quart);
+}
+.group:hover .arrow-nudge,
+.group:focus-visible .arrow-nudge {
+  transform: translateX(4px);
+}
+.group:hover .arrow-nudge-diag,
+.group:focus-visible .arrow-nudge-diag {
+  transform: translate(3px, -3px);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  height: 3.25rem;
+  padding-inline: 1.5rem;
+  border-radius: 3px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  white-space: nowrap;
+  transition:
+    background-color 0.3s var(--ease-out-quart),
+    color 0.3s var(--ease-out-quart),
+    border-color 0.3s var(--ease-out-quart);
+}
+.btn-gold {
+  background: var(--color-gold);
+  color: var(--color-ink);
+}
+.btn-gold:hover {
+  background: var(--color-gold-soft);
+}
+.btn-ink {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+.btn-ink:hover {
+  background: var(--color-blue);
+}
+.btn-ghost-dark {
+  border: 1px solid var(--line-dark-strong);
+  color: var(--color-paper);
+}
+.btn-ghost-dark:hover {
+  border-color: rgb(246 245 241 / 0.5);
+  background: rgb(246 245 241 / 0.04);
+}
+}
+
+/* ------------------------------------------------------------------
+   Hero pre-hydration state. The inline script in <head> adds
+   .motion-ok only when the visitor has not requested reduced motion,
+   so content is never hidden for reduced-motion users.
+------------------------------------------------------------------- */
+.motion-ok [data-hero-root]:not(.is-ready) [data-hero="fade"],
+.motion-ok [data-hero-root]:not(.is-ready) [data-hero="panel"],
+.motion-ok [data-hero-root]:not(.is-ready) [data-hero="row"],
+.motion-ok [data-hero-root]:not(.is-ready) [data-hero="card"] {
+  opacity: 0;
+}
+.motion-ok [data-hero-root]:not(.is-ready) [data-hero="line"] {
+  transform: translateY(108%);
+}
+.motion-ok [data-hero-root]:not(.is-ready) [data-hero="bar"] {
+  transform: scaleY(0);
+}
+.motion-ok .site-header:not(.is-ready) [data-header-inner] {
+  opacity: 0;
+}
+
+/* ------------------------------------------------------------------
+   Clarity report: state-driven emphasis (data-step on the report root)
+------------------------------------------------------------------- */
+.report [data-g] {
+  transition:
+    opacity 0.6s var(--ease-out-quart),
+    background-color 0.6s var(--ease-out-quart),
+    color 0.6s var(--ease-out-quart);
+}
+.report [data-figure] {
+  transition: color 0.6s var(--ease-out-quart);
+}
+.report[data-step="1"] [data-g]:not([data-g~="pl"]),
+.report[data-step="2"] [data-g]:not([data-g~="cash"]),
+.report[data-step="3"] [data-g]:not([data-g~="key"]) {
+  opacity: 0.26;
+}
+.report[data-step="1"] [data-g~="pl"][data-em],
+.report[data-step="2"] [data-g~="cash"][data-em],
+.report[data-step="3"] [data-g~="key"][data-em] {
+  background-color: rgb(184 151 90 / 0.14);
+}
+.report[data-step="1"] [data-g~="pl"][data-em] [data-figure],
+.report[data-step="2"] [data-g~="cash"][data-em] [data-figure],
+.report[data-step="3"] [data-g~="key"][data-em] [data-figure] {
+  color: var(--color-gold-deep);
+}
+.report .chart-bar {
+  transform-origin: bottom;
+  transform: scaleY(0.12);
+  opacity: 0.35;
+  transition:
+    transform 0.9s var(--ease-out-expo),
+    opacity 0.6s var(--ease-out-quart);
+}
+.report[data-step="1"] .chart-bar,
+.report[data-step="2"] .chart-bar,
+.report[data-step="3"] .chart-bar {
+  transform: scaleY(1);
+  opacity: 1;
+}
+.report[data-step="1"] .chart-bar:nth-child(2) { transition-delay: 0.08s; }
+.report .note {
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity 0.5s var(--ease-out-quart),
+    transform 0.5s var(--ease-out-quart);
+}
+.report[data-step="1"] .note[data-note="1"],
+.report[data-step="2"] .note[data-note="2"],
+.report[data-step="3"] .note[data-note="3"] {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.2s;
+}
+
+/* Service and case-study panel swap */
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.panel-in {
+  animation: panel-in 0.55s var(--ease-out-quart) both;
+}
+.panel-in-stagger > * {
+  animation: panel-in 0.6s var(--ease-out-quart) both;
+}
+.panel-in-stagger > *:nth-child(2) { animation-delay: 0.05s; }
+.panel-in-stagger > *:nth-child(3) { animation-delay: 0.1s; }
+.panel-in-stagger > *:nth-child(4) { animation-delay: 0.15s; }
+.panel-in-stagger > *:nth-child(5) { animation-delay: 0.2s; }
+
+/* ------------------------------------------------------------------
+   Reduced motion: keep state changes, drop movement.
+------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+  }
 }
