@@ -1,29 +1,32 @@
-import Header from "@/components/Header";
-import Hero from "@/components/Hero";
-import ProblemSection from "@/components/ProblemSection";
-import ServicesSection from "@/components/ServicesSection";
-import FinancialClarityStory from "@/components/FinancialClarityStory";
-import WhyUmanzor from "@/components/WhyUmanzor";
-import CaseStudies from "@/components/CaseStudies";
-import ProcessSection from "@/components/ProcessSection";
-import ClosingCTA from "@/components/ClosingCTA";
-import Footer from "@/components/Footer";
+import Nav from "@/components/home2/Nav";
+import Hero from "@/components/home2/Hero";
+import { FounderBanner, Intro, Trusted } from "@/components/home2/Intro";
+import { Statement, Vision } from "@/components/home2/Story";
+import { Familiar, Stories } from "@/components/home2/Stories";
+import { Process, ServicesCarousel, Testimonial } from "@/components/home2/Services";
+import { Banner, ContactCards } from "@/components/home2/Closing";
+import Footer2 from "@/components/home2/Footer";
 
 export default function Home() {
   return (
-    <>
-      <Header />
+    <div className="bg-silver text-royal-deep">
+      <Nav />
       <main id="main">
         <Hero />
-        <ProblemSection />
-        <ServicesSection />
-        <FinancialClarityStory />
-        <WhyUmanzor />
-        <CaseStudies />
-        <ProcessSection />
-        <ClosingCTA />
+        <Intro />
+        <FounderBanner />
+        <Trusted />
+        <Statement />
+        <Vision />
+        <Familiar />
+        <Stories />
+        <ServicesCarousel />
+        <Testimonial />
+        <Process />
+        <Banner />
+        <ContactCards />
       </main>
-      <Footer />
-    </>
+      <Footer2 />
+    </div>
   );
 }

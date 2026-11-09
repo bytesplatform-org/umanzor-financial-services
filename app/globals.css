@@ -22,6 +22,25 @@
   --color-positive: #2f6b4f;
   --color-positive-soft: #7fbf9c;
 
+  /* Flat palette drawn from the logo (navy, muted gold), used by /hero-1 */
+  --color-royal: #1b2d52;
+  --color-royal-deep: #0f1b33;
+  --color-royal-bright: #2a4274;
+  --color-royal-tint: #e4e9f1;
+  --color-brass: #c9a24b;
+  --color-brass-light: #f1ebdf;
+  --color-brass-deep: #8a6a22;
+  --color-silver: #f4f5f7;
+  --color-silver-2: #e3e6eb;
+  --color-steel: #5a6475;
+
+  /* Supporting accents for the home page's colourful card system */
+  --color-coral: #e8775a;
+  --color-sky: #cfe0f5;
+  --color-sage: #d4e6d7;
+  --color-sage-deep: #2f6b4f;
+  --color-lime: #e5ec9a;
+
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-roboto-condensed), "Arial Narrow", ui-sans-serif, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
@@ -332,3 +351,51 @@ body {
   }
 }
 
+/* ------------------------------------------------------------------
+   Home page (components/home2)
+------------------------------------------------------------------- */
+.motion-ok [data-h2-hero]:not(.is-ready) :is([data-w], [data-h2], [data-tag], [data-fan-card]) {
+  opacity: 0;
+}
+
+@keyframes h2-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.h2-marquee {
+  animation: h2-marquee var(--dur, 40s) linear infinite;
+}
+.h2-marquee[data-dir="rev"] {
+  animation-direction: reverse;
+}
+.h2-marquee-wrap:hover .h2-marquee {
+  animation-play-state: paused;
+}
+
+@keyframes h2-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+.h2-bob {
+  animation: h2-bob 4.6s ease-in-out infinite;
+}
+[data-tag]:nth-of-type(2n) .h2-bob {
+  animation-delay: -2.1s;
+}
+
+.h2-fade-x {
+  mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .h2-marquee,
+  .h2-bob {
+    animation: none !important;
+  }
+}
